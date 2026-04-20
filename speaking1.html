@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雅思口语 Part 1/2/3 大题库语料库（扩充版）</title>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+  --blue:#2563eb; --blue-soft:#dbeafe; --green:#16a34a; --green-soft:#dcfce7;
+  --amber:#d97706; --amber-soft:#fef3c7; --shadow:0 10px 30px rgba(15,23,42,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:18px 14px 48px}
+.hero{background:linear-gradient(135deg,#eff6ff,#ffffff 45%,#f0fdf4);border:1px solid var(--line);border-radius:20px;padding:18px 16px;box-shadow:var(--shadow)}
+h1{font-size:24px;line-height:1.25;margin:0 0 8px}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
+.toolbar{position:sticky;top:0;z-index:20;background:rgba(246,247,251,.9);backdrop-filter:blur(12px);padding:12px 0 10px;margin-top:14px}
+.controls{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:10px}
+input,select,button{font:inherit}
+input,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--text)}
+button{border:0;border-radius:14px;padding:12px 14px;background:var(--blue);color:#fff;font-weight:600;cursor:pointer}
+button.ghost{background:#fff;color:var(--text);border:1px solid var(--line)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.tab{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.tab.active{background:var(--blue-soft);color:var(--blue);border-color:#bfdbfe;font-weight:700}
+.section{display:none}
+.section.active{display:block}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin:18px 0 12px}
+.section-head h2{margin:0;font-size:20px}
+.counter{font-size:13px;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.topic{font-size:18px;font-weight:800;margin:0}
+.topic small{font-size:13px;color:var(--muted);font-weight:600;margin-left:6px}
+.label-row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;padding:4px 10px;border-radius:999px;font-size:12px}
+.p1{background:var(--green-soft);color:#166534}
+.p2{background:var(--blue-soft);color:#1d4ed8}
+.p3{background:var(--amber-soft);color:#92400e}
+.item{border-top:1px dashed var(--line);padding-top:12px;margin-top:12px}
+.q{font-weight:700;margin-bottom:6px}
+.a{color:#111827}
+.frame{margin-top:6px;font-size:13px;color:var(--muted)}
+details{border-top:1px dashed var(--line);padding-top:12px;margin-top:12px}
+summary{cursor:pointer;font-weight:700;color:var(--blue)}
+.cue{margin:8px 0 0 0;padding-left:18px}
+.phrases{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.phr{font-size:12px;background:#f3f4f6;border:1px solid var(--line);padding:5px 10px;border-radius:999px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.bank h3{margin:0 0 8px;font-size:16px}
+.bank ul{margin:0;padding-left:18px}
+.hide-answers .a, .hide-answers .frame, .hide-answers details .answer-wrap{display:none}
+.hide-answers details summary::after{content:"（已隐藏内容）";font-size:12px;color:var(--muted);margin-left:8px}
+.footer-note{color:var(--muted);font-size:12px;margin-top:18px}
+@media (max-width:760px){
+  .controls{grid-template-columns:1fr;}
+  .grid2{grid-template-columns:1fr}
+  h1{font-size:21px}
+  .topic{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>雅思口语 Part 1 / 2 / 3 大题库语料库（扩充版）</h1>
+    <p class="sub">适合手机端复习与背诵。可按 Part、主题和关键词筛选；支持隐藏答案，先自己说，再对照语料。</p>
+</div>
+
+  <div class="toolbar">
+    <div class="controls">
+      <input id="search" placeholder="搜索题目 / 关键词 / 表达，例如：hometown / confidence / toy">
+      <select id="topicFilter"><option value="">全部主题</option></select>
+      <select id="partFilter">
+        <option value="">全部 Part</option>
+        <option value="part1">Part 1</option>
+        <option value="part2">Part 2</option>
+        <option value="part3">Part 3</option>
+      </select>
+      <button id="toggleAnswers" class="ghost">隐藏答案模式</button>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-target="part1Sec">Part 1</button>
+      <button class="tab" data-target="part2Sec">Part 2</button>
+      <button class="tab" data-target="part3Sec">Part 3</button>
+      <button class="tab" data-target="bankSec">表达库</button>
+    </div>
+  </div>
+
+  <section id="part1Sec" class="section active">
+    <div class="section-head"><h2>Part 1 高频短答库</h2><div class="counter" id="count1"></div></div>
+    <article class="card searchable" data-part="part1" data-topic="Area you live in 居住地">
+      <div class="card-head">
+        <h3 class="topic">Area you live in<small>居住地</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Where do you live? Do you like this area?</div><div class="a">I live in a fairly convenient neighborhood near the city center. What I like most is that daily life is easy there: public transport is reliable, there are plenty of small restaurants nearby, and I can reach most places on foot. So yes, I do like the area because it saves time and makes life less stressful.</div><div class="frame">答题骨架：place + convenience + feeling</div></div><div class="item"><div class="q">What do you like most about your area?</div><div class="a">Probably the convenience. Everything I need is within walking distance, from supermarkets to cafés, and that gives me a strong sense of comfort. Besides that, the area feels lively but not too noisy, which is a balance I really appreciate.</div><div class="frame">答题骨架：main feature + example + why it matters</div></div><div class="item"><div class="q">Would you like to live somewhere different in the future?</div><div class="a">Yes, possibly. Although I’m satisfied with where I live now, I’d love to try a place with a completely different atmosphere one day, perhaps somewhere quieter and closer to nature. I think that would be a refreshing change after living in a busy urban area for so long.</div><div class="frame">答题骨架：current view + future preference + contrast</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Work or Study 工作/学习">
+      <div class="card-head">
+        <h3 class="topic">Work or Study<small>工作/学习</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What do you study? Why did you choose it?</div><div class="a">I study a subject related to data and business, and I chose it because I enjoy solving problems in a logical way. It suits my personality quite well, since I like working with numbers, patterns, and practical applications. More importantly, I feel it can open up a wide range of career options in the future.</div><div class="frame">答题骨架：subject + reason + future value</div></div><div class="item"><div class="q">Do you enjoy your major?</div><div class="a">Yes, overall I do. Some parts are definitely challenging, especially when the workload builds up, but I enjoy the feeling of gradually understanding something difficult. The more I learn, the more I can see how the theories connect with real-life situations.</div><div class="frame">答题骨架：yes/no + challenge + rewarding part</div></div><div class="item"><div class="q">Do you prefer studying in the morning or the afternoon?</div><div class="a">I definitely prefer the afternoon because that’s when I feel mentally sharper. In the morning, I usually need some time to wake up and get into the right mood, whereas later in the day I can focus for longer and absorb information more efficiently.</div><div class="frame">答题骨架：preference + personal rhythm + result</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Accommodation 住所">
+      <div class="card-head">
+        <h3 class="topic">Accommodation<small>住所</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you live in a house or an apartment?</div><div class="a">I live in an apartment, and it suits my current lifestyle quite well. It’s easier to maintain than a house, and the location is much more convenient for commuting, shopping, and meeting friends.</div><div class="frame">答题骨架：type + reason + lifestyle fit</div></div><div class="item"><div class="q">Which room do you like most in your home?</div><div class="a">My favorite room is my bedroom because it’s the place where I can fully relax. I keep most of my personal belongings there, and it’s also where I study, read, and unwind after a long day. So in a way, it feels like my own little private world.</div><div class="frame">答题骨架：room + functions + emotional value</div></div><div class="item"><div class="q">What would make your home more comfortable?</div><div class="a">I think better lighting and more storage space would make a big difference. A brighter room usually feels more welcoming, and having enough space to organize things would make the whole environment look tidier and calmer.</div><div class="frame">答题骨架：change + concrete detail + effect</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Hometown 家乡">
+      <div class="card-head">
+        <h3 class="topic">Hometown<small>家乡</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Is your hometown a big city or a small place?</div><div class="a">My hometown is quite a large city, so it’s busy and energetic most of the time. It has modern facilities and plenty of job opportunities, but at the same time it still has areas with a strong local identity.</div><div class="frame">答题骨架：size + atmosphere + balance</div></div><div class="item"><div class="q">What do you like most about your hometown?</div><div class="a">What I like most is probably the food culture. There’s a huge variety of local dishes, and food is also an important part of social life there. Whenever I go back, eating with family and friends is always one of the highlights.</div><div class="frame">答题骨架：best feature + example + personal link</div></div><div class="item"><div class="q">Is there anything you dislike about it?</div><div class="a">Yes, the weather can be a bit uncomfortable at times, especially during hot or humid periods. Traffic is another issue, because getting around can be time-consuming when the city is crowded.</div><div class="frame">答题骨架：one drawback + one more + impact</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Day Off 休息日">
+      <div class="card-head">
+        <h3 class="topic">Day Off<small>休息日</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What do you usually do on your days off?</div><div class="a">I usually keep my days off quite flexible. If I feel tired, I stay at home, catch up on sleep, and maybe watch a film or read for a while. If I have more energy, I go out for a meal with friends or take a walk somewhere quiet.</div><div class="frame">答题骨架：two scenarios + examples</div></div><div class="item"><div class="q">Do you prefer spending your days off alone or with others?</div><div class="a">It depends on my mood. After a busy week, I often want some time alone just to recharge. But if I’ve been under pressure for too long, spending time with close friends can really lift my mood and help me reset.</div><div class="frame">答题骨架：it depends + alone + with others</div></div><div class="item"><div class="q">Would you like to do anything special on your next day off?</div><div class="a">Yes, I’d like to have a really slow and peaceful day. Ideally, I’d start late, have a nice coffee, and then go somewhere calm like a park or a bookstore. I think that kind of simple routine is surprisingly refreshing.</div><div class="frame">答题骨架：ideal plan + sequence + feeling</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Food 食物">
+      <div class="card-head">
+        <h3 class="topic">Food<small>食物</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What kind of food do you like?</div><div class="a">I enjoy food that feels fresh and flavorful, especially dishes that are light but still satisfying. I’m also quite open to trying different cuisines, so I rarely stick to just one type of food.</div><div class="frame">答题骨架：preference + features + attitude</div></div><div class="item"><div class="q">Did you eat a lot of snacks when you were younger?</div><div class="a">Yes, definitely. When I was younger, I loved sweet and crispy snacks because they were cheap, convenient, and hard to resist. These days I’m more careful about what I eat, so I try to choose healthier options.</div><div class="frame">答题骨架：past habit + reason + now</div></div><div class="item"><div class="q">Have your eating habits changed?</div><div class="a">Yes, quite a lot. I used to focus mainly on taste, but now I pay much more attention to nutrition and balance. I still enjoy good food, of course, but I’ve become more aware of how diet affects my energy and health.</div><div class="frame">答题骨架：yes + past vs now + insight</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Children&#x27;s Activities 儿童活动">
+      <div class="card-head">
+        <h3 class="topic">Children&#x27;s Activities<small>儿童活动</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What activities did you enjoy when you were a child?</div><div class="a">I enjoyed outdoor games the most when I was a child. Running around with other kids felt exciting, and it was also a great way to use up energy and make friends naturally.</div><div class="frame">答题骨架：activity + reason + benefit</div></div><div class="item"><div class="q">Did you prefer group activities or doing things alone?</div><div class="a">I mostly preferred group activities because they were more exciting and unpredictable. That said, I also enjoyed quiet hobbies from time to time, especially when I wanted to focus on something by myself.</div><div class="frame">答题骨架：main preference + contrast</div></div><div class="item"><div class="q">Do children today spend enough time being active?</div><div class="a">Not always. Many children are busy with schoolwork or spend a lot of time on screens, so active play can be reduced. I think they still need chances to move around freely because physical activity is important for both health and social development.</div><div class="frame">答题骨架：view + reason + recommendation</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Life Stage 人生阶段">
+      <div class="card-head">
+        <h3 class="topic">Life Stage<small>人生阶段</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What is an important stage in life?</div><div class="a">I think early adulthood is a particularly important stage because that’s when people start making independent decisions about study, work, and relationships. It’s often a period of uncertainty, but also one of the fastest personal growth.</div><div class="frame">答题骨架：stage + why important + dual nature</div></div><div class="item"><div class="q">Do people often remember one specific stage of life vividly?</div><div class="a">Yes, they do, especially periods connected to major change or strong emotions. People often remember school years, first jobs, or important transitions because those experiences shape how they see themselves.</div><div class="frame">答题骨架：yes + examples + reason</div></div><div class="item"><div class="q">Do you make plans for the next few years?</div><div class="a">Yes, I do, although I try to keep them flexible. I usually set broad goals rather than a fixed path, because life can change quickly. Having a plan gives me direction, but leaving room for adjustment makes it more realistic.</div><div class="frame">答题骨架：yes + method + balance</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Pets and Animals 宠物与动物">
+      <div class="card-head">
+        <h3 class="topic">Pets and Animals<small>宠物与动物</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">What’s your favorite animal?</div><div class="a">One of my favorite animals is the dolphin because it seems intelligent, playful, and graceful at the same time. I’ve always found it fascinating how social and responsive dolphins appear to be.</div><div class="frame">答题骨架：animal + qualities + personal reaction</div></div><div class="item"><div class="q">Would you rather keep pets indoors or outdoors?</div><div class="a">I’d prefer keeping pets indoors in most cases because it’s safer and easier to take care of them properly. Indoor pets are usually better protected from traffic, harsh weather, and other risks.</div><div class="frame">答题骨架：choice + reasons</div></div><div class="item"><div class="q">Why do children like animals?</div><div class="a">I think children like animals because they find them cute, lively, and emotionally engaging. Animals also appear a lot in cartoons and storybooks, so children often feel familiar with them from an early age.</div><div class="frame">答题骨架：main reasons + media link</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Reading 阅读">
+      <div class="card-head">
+        <h3 class="topic">Reading<small>阅读</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Have you read any books lately?</div><div class="a">Yes, I’ve read a few recently, mostly short novels and non-fiction books. I like reading things that are thoughtful but still accessible, because they help me relax while also giving me something to think about.</div><div class="frame">答题骨架：yes + type + reason</div></div><div class="item"><div class="q">Do you prefer serious books or light reading?</div><div class="a">I usually prefer thoughtful reading, but not anything too heavy all the time. If a book is meaningful and well written, I enjoy taking my time with it. Still, when I’m tired, I sometimes just want something light and easy to follow.</div><div class="frame">答题骨架：preference + nuance</div></div><div class="item"><div class="q">Why do some people like speed reading?</div><div class="a">Probably because it saves time. In a world where people are constantly overloaded with information, speed reading can seem like an efficient way to get the main points quickly, especially for work or study.</div><div class="frame">答题骨架：reason + modern context</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Fixing Things 维修东西">
+      <div class="card-head">
+        <h3 class="topic">Fixing Things<small>维修东西</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Can you fix things by yourself?</div><div class="a">Only simple things, to be honest. If it’s a minor issue, I’ll try to deal with it myself, but if it involves electronics or anything complicated, I’d rather ask someone more experienced to avoid making it worse.</div><div class="frame">答题骨架：ability + limit + reason</div></div><div class="item"><div class="q">Did you enjoy fixing things when you were young?</div><div class="a">Not particularly. I was more interested in reading or creative activities, so practical repair skills weren’t really something I focused on. As a result, I didn’t build much confidence in that area.</div><div class="frame">答题骨架：no/yes + childhood tendency + result</div></div><div class="item"><div class="q">Is it necessary to teach children how to repair things?</div><div class="a">To some extent, yes. They don’t need to become experts, but learning basic repair skills can make them more independent and practical. It also teaches patience and problem-solving.</div><div class="frame">答题骨架：position + limit + benefits</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Walking 步行">
+      <div class="card-head">
+        <h3 class="topic">Walking<small>步行</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Where do you usually go for a walk?</div><div class="a">I usually walk in parks or along quiet streets near where I live. I prefer places that feel open and calm, because walking for me is more about clearing my mind than getting somewhere quickly.</div><div class="frame">答题骨架：where + preference + purpose</div></div><div class="item"><div class="q">Did you walk a lot when you were a child?</div><div class="a">Yes, I did. I used to walk quite a lot with my family, especially during holidays or in the evenings. Those walks felt simple at the time, but now I realize they were an important part of my childhood routine.</div><div class="frame">答题骨架：yes + context + reflection</div></div><div class="item"><div class="q">Would you like to go on a long walk in the future?</div><div class="a">Yes, definitely. I’d love to do a long walk somewhere scenic, perhaps in the mountains or by the sea. I think spending hours in nature would feel both physically refreshing and mentally calming.</div><div class="frame">答题骨架：yes + ideal place + benefits</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Gift 礼物">
+      <div class="card-head">
+        <h3 class="topic">Gift<small>礼物</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Why do people send gifts?</div><div class="a">I think people send gifts mainly to express affection, gratitude, or celebration. A gift is a tangible way of showing that someone matters to you, especially when words alone don’t feel enough.</div><div class="frame">答题骨架：purpose + emotional meaning</div></div><div class="item"><div class="q">What kinds of gifts are popular in your country?</div><div class="a">Practical gifts are usually quite popular, such as food, skincare products, or useful items for daily life. During festivals, people also like giving things that feel festive and thoughtful rather than overly expensive.</div><div class="frame">答题骨架：examples + cultural note</div></div><div class="item"><div class="q">Do you prefer expensive gifts or meaningful gifts?</div><div class="a">I definitely prefer meaningful gifts. Even a simple present can feel special if it shows the other person understands your preferences or remembers something important about you.</div><div class="frame">答题骨架：choice + reason + example logic</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Morning Time 晨间">
+      <div class="card-head">
+        <h3 class="topic">Morning Time<small>晨间</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you like getting up early?</div><div class="a">Not really, if I’m being honest. I’m more productive later in the day, so early mornings often feel a bit difficult for me. That said, I do appreciate how peaceful everything feels before the day gets busy.</div><div class="frame">答题骨架：no/yes + personal rhythm + one positive</div></div><div class="item"><div class="q">What do you usually do in the morning?</div><div class="a">My morning routine is fairly simple. I usually start by checking the time, washing up, and having something to drink before I look at my schedule for the day. I prefer not to rush too much if possible.</div><div class="frame">答题骨架：routine sequence</div></div><div class="item"><div class="q">Do your weekdays and weekends start differently?</div><div class="a">Yes, quite differently. On weekdays, I’m more structured because I have responsibilities to deal with, but on weekends I usually wake up later and take things at a slower pace.</div><div class="frame">答题骨架：difference + reason</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Hobby 爱好">
+      <div class="card-head">
+        <h3 class="topic">Hobby<small>爱好</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you have a hobby?</div><div class="a">Yes, I do. One hobby I really enjoy is photography because it encourages me to pay attention to details I might otherwise ignore. It also gives me a good excuse to get outside and explore new places.</div><div class="frame">答题骨架：hobby + why enjoy + effect</div></div><div class="item"><div class="q">Did you have hobbies as a child?</div><div class="a">Yes, when I was a child I spent a lot of time drawing and making things by hand. I think those hobbies helped me use my imagination more actively and taught me how to focus on something for a long time.</div><div class="frame">答题骨架：past hobby + benefits</div></div><div class="item"><div class="q">Do your family members share the same hobbies?</div><div class="a">Not really. We all have quite different interests, which I actually think is a good thing. It means we introduce each other to new activities rather than all doing exactly the same thing.</div><div class="frame">答题骨架：no/yes + why okay</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Team Sports 团队运动">
+      <div class="card-head">
+        <h3 class="topic">Team Sports<small>团队运动</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you like team sports?</div><div class="a">Yes, I do, because team sports are energetic and social at the same time. I enjoy the sense of cooperation and the feeling that everyone is working toward the same goal.</div><div class="frame">答题骨架：yes + two reasons</div></div><div class="item"><div class="q">Did you play team sports in the past?</div><div class="a">Yes, I did, especially at school. Even though I wasn’t always the best player, I enjoyed the atmosphere and learned a lot about communication and responsibility.</div><div class="frame">答题骨架：past experience + learning</div></div><div class="item"><div class="q">Do you prefer team sports or individual sports?</div><div class="a">I slightly prefer individual sports because they let me move at my own pace, but I can also understand the appeal of team sports. They’re great for building motivation and creating a sense of belonging.</div><div class="frame">答题骨架：preference + concession</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Typing 打字">
+      <div class="card-head">
+        <h3 class="topic">Typing<small>打字</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you prefer typing or handwriting?</div><div class="a">I prefer typing because it’s much faster and more convenient, especially when I need to organize ideas or make changes quickly. Handwriting still has its charm, but for efficiency, typing wins easily for me.</div><div class="frame">答题骨架：choice + reasons + contrast</div></div><div class="item"><div class="q">Did you learn typing at school?</div><div class="a">Only in a basic way. Most of my real improvement came from using computers regularly rather than from formal lessons. The more I typed, the more natural it became.</div><div class="frame">答题骨架：school + real learning source</div></div><div class="item"><div class="q">How can people improve their typing?</div><div class="a">The best way is through consistent practice. Typing regularly, learning proper finger placement, and focusing on accuracy before speed can gradually make a big difference.</div><div class="frame">答题骨架：method + steps + result</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="High Buildings 高楼">
+      <div class="card-head">
+        <h3 class="topic">High Buildings<small>高楼</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Are there many tall buildings where you live?</div><div class="a">Yes, there are quite a few, especially apartment blocks and office towers. They’re so common that they’ve become part of the everyday city landscape.</div><div class="frame">答题骨架：yes/no + examples + impression</div></div><div class="item"><div class="q">Do you like looking at tall buildings?</div><div class="a">Yes, I do, especially when the architecture is distinctive. Tall buildings can make a city look modern and dynamic, although if there are too many of them, the place can start to feel a bit impersonal.</div><div class="frame">答题骨架：yes + positive + caution</div></div><div class="item"><div class="q">What kind of buildings would you like to live in?</div><div class="a">I’d like to live in a modern apartment building with good facilities and plenty of natural light. Convenience matters to me, but so does having a comfortable and pleasant environment.</div><div class="frame">答题骨架：ideal building + features</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Travelling 旅行">
+      <div class="card-head">
+        <h3 class="topic">Travelling<small>旅行</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you enjoy looking out of the window while travelling?</div><div class="a">Yes, very much. Looking out of the window makes the journey feel more immersive, especially when the scenery changes along the way. It’s one of the simplest ways to enjoy travel without doing anything special.</div><div class="frame">答题骨架：yes + why + scene</div></div><div class="item"><div class="q">Do you like taking photos when you travel?</div><div class="a">Yes, I do, because photos help me keep a record of small but memorable moments. I don’t photograph everything, but I like capturing scenes that reflect the atmosphere of a place.</div><div class="frame">答题骨架：yes + purpose + moderation</div></div><div class="item"><div class="q">Do you prefer mountains or the sea?</div><div class="a">I slightly prefer the sea because it feels more relaxing and open to me. The sound of the waves and the slower pace of coastal places make it easier for me to unwind.</div><div class="frame">答题骨架：choice + sensory reason</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Plants 植物">
+      <div class="card-head">
+        <h3 class="topic">Plants<small>植物</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you keep plants at home?</div><div class="a">Yes, I keep a few small plants because they make the space feel calmer and more alive. They don’t require too much effort, but they still improve the atmosphere noticeably.</div><div class="frame">答题骨架：yes/no + effect</div></div><div class="item"><div class="q">Do you like flowers?</div><div class="a">Yes, I do, especially when they look natural rather than overly formal. Flowers can brighten a place very quickly and often make people feel more relaxed or cheerful.</div><div class="frame">答题骨架：yes + why</div></div><div class="item"><div class="q">Would you send flowers to other people?</div><div class="a">Yes, for certain occasions. Flowers are a simple but thoughtful gift, especially when I want to show congratulations, gratitude, or care without making it too complicated.</div><div class="frame">答题骨架：yes + occasions + meaning</div></div>
+      </article><article class="card searchable" data-part="part1" data-topic="Shoes 鞋子">
+      <div class="card-head">
+        <h3 class="topic">Shoes<small>鞋子</small></h3>
+        <div class="label-row"><span class="chip p1">Part 1</span></div>
+      </div>
+      <div class="item"><div class="q">Do you prefer comfortable shoes or fashionable shoes?</div><div class="a">I definitely prefer comfortable shoes because I wear them for long periods, so practicality matters a lot. Of course, it’s nice if they also look good, but comfort always comes first for me.</div><div class="frame">答题骨架：choice + reason + small concession</div></div><div class="item"><div class="q">Do you buy shoes online or in shops?</div><div class="a">I prefer buying them in physical shops because I can try them on and see whether they really fit well. Shoes are one of those things that can look fine online but feel completely different in real life.</div><div class="frame">答题骨架：choice + reason + example</div></div><div class="item"><div class="q">Do people spend a lot of money on shoes?</div><div class="a">Some do, especially if they care a lot about fashion or want shoes from well-known brands. But for most people, I think it depends on whether they see shoes as a necessity or a form of self-expression.</div><div class="frame">答题骨架：some people + factors</div></div>
+      </article>
+  </section>
+
+  <section id="part2Sec" class="section">
+    <div class="section-head"><h2>Part 2 话题卡背诵库</h2><div class="counter" id="count2"></div></div>
+    <article class="card searchable" data-part="part2" data-topic="A story you read recently 最近读到的一个故事">
+      <div class="card-head">
+        <h3 class="topic">A story you read recently<small>最近读到的一个故事</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what the story was</li><li>when you read it</li><li>what it was about</li><li>how you felt about it</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">I’d like to talk about a short story I read a few months ago called The Last Leaf. I came across it while I was looking for something brief but meaningful to read. What impressed me most was how a simple plot could carry so much emotional weight. By the end, I felt moved and slightly reflective, because the story highlights sacrifice, hope, and human connection in a very subtle way.</div>
+          <div class="phrases"><span class="phr">emotional weight</span><span class="phr">left a strong impression on me</span><span class="phr">subtle but powerful</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A natural talent you have 一个你拥有的天赋">
+      <div class="card-head">
+        <h3 class="topic">A natural talent you have<small>一个你拥有的天赋</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what it is</li><li>why it is a natural talent</li><li>when you use it</li><li>how you feel about it</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">One natural talent I believe I have is explaining complex ideas in a simple way. I noticed this quite early because classmates often came to me when they were confused about a topic. I tend to break information into smaller, clearer parts, and that seems to help people understand quickly. It gives me a strong sense of satisfaction because I feel useful and confident when I can make something difficult feel manageable.</div>
+          <div class="phrases"><span class="phr">come naturally to me</span><span class="phr">break things into manageable parts</span><span class="phr">feel a sense of satisfaction</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A child who enjoys drawing or painting 一个喜欢画画的孩子">
+      <div class="card-head">
+        <h3 class="topic">A child who enjoys drawing or painting<small>一个喜欢画画的孩子</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>who the child is</li><li>how often the child draws</li><li>what the child likes to draw</li><li>why the child likes it</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">I’d like to describe my young cousin, who is absolutely obsessed with drawing. Whenever I visit, I see her with colored pencils or markers in her hand. She especially loves drawing animals and fantasy characters, and she can spend hours creating little scenes and stories around them. I think she enjoys it because drawing gives her freedom to express ideas that are hard to put into words.</div>
+          <div class="phrases"><span class="phr">be obsessed with</span><span class="phr">let the imagination run wild</span><span class="phr">express ideas visually</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A person who solved a problem in a clever way 一个以智取胜的人">
+      <div class="card-head">
+        <h3 class="topic">A person who solved a problem in a clever way<small>一个以智取胜的人</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>who the person is</li><li>what the problem was</li><li>how the person solved it</li><li>why you admired it</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">A person who immediately comes to mind is one of my former classmates. During a group project, our team nearly missed the deadline because everyone had conflicting schedules. Instead of panicking, he created a shared online document, divided the task into tiny sections, and assigned each person a realistic deadline. It was clever because the solution was simple, practical, and easy for everyone to follow.</div>
+          <div class="phrases"><span class="phr">what comes to mind</span><span class="phr">instead of panicking</span><span class="phr">a simple but effective solution</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A great friend who is important to you 一个对你很重要的好朋友">
+      <div class="card-head">
+        <h3 class="topic">A great friend who is important to you<small>一个对你很重要的好朋友</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>who the person is</li><li>how you met</li><li>how long you have known each other</li><li>why the person matters</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">I’d like to talk about one of my closest friends from university. We met during our first year and gradually became close because we worked well together and had similar values. What makes this friend important to me is not just how long we’ve known each other, but the fact that I can rely on them when life gets difficult. They’re calm, honest, and good at giving practical advice without making me feel judged.</div>
+          <div class="phrases"><span class="phr">gradually became close</span><span class="phr">someone I can rely on</span><span class="phr">without making me feel judged</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="The first time you talked with a foreigner in a foreign language 第一次用外语与外国人交谈">
+      <div class="card-head">
+        <h3 class="topic">The first time you talked with a foreigner in a foreign language<small>第一次用外语与外国人交谈</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>who the person was</li><li>where and when it happened</li><li>what you talked about</li><li>how you felt</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">The first time I had a real conversation with a foreigner was when I spoke to a tourist in English at a famous sightseeing spot. At first I felt extremely nervous because I was worried about making mistakes, but once the conversation started, I realized communication mattered more than perfect grammar. By the end, I felt relieved and surprisingly proud of myself.</div>
+          <div class="phrases"><span class="phr">step out of my comfort zone</span><span class="phr">more relieved than embarrassed</span><span class="phr">communication matters more than perfection</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A toy you loved in your childhood 小时候喜欢的玩具">
+      <div class="card-head">
+        <h3 class="topic">A toy you loved in your childhood<small>小时候喜欢的玩具</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what it was</li><li>who gave it to you</li><li>how often you played with it</li><li>why it was special</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">A toy I remember very clearly is a small stuffed animal I received as a birthday gift. It wasn’t expensive or high-tech, but I was deeply attached to it because I carried it everywhere. What made it special was the sense of comfort it gave me. Looking back, I think it represented security and familiarity during a stage when small things felt very important.</div>
+          <div class="phrases"><span class="phr">be deeply attached to</span><span class="phr">carry it everywhere</span><span class="phr">a sense of security</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="An interesting building you would like to visit 一座你感兴趣的建筑">
+      <div class="card-head">
+        <h3 class="topic">An interesting building you would like to visit<small>一座你感兴趣的建筑</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>where it is</li><li>how you knew it</li><li>what you know about it</li><li>how you would feel visiting it</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">An interesting building I’d really like to visit is the Eiffel Tower in Paris. I first learned about it through books and films, but over time it became more than just a famous landmark to me. I’m interested in it not only because of its design and history, but also because it symbolizes travel, curiosity, and seeing the world more widely. If I had the chance to go there, I’d feel excited and probably a bit emotional as well.</div>
+          <div class="phrases"><span class="phr">more than just a landmark</span><span class="phr">symbolize curiosity</span><span class="phr">feel excited and a bit emotional</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A plan you made 一个你制定过的计划">
+      <div class="card-head">
+        <h3 class="topic">A plan you made<small>一个你制定过的计划</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what the plan was</li><li>why you made it</li><li>how you carried it out</li><li>how you felt</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">A plan I made recently was to organize my weekly study routine more carefully. I wrote down my priorities, divided large tasks into smaller chunks, and gave myself realistic deadlines. What I liked about this plan was that it reduced my anxiety and made the week feel more manageable. It reminded me that planning isn’t about control; it’s about clarity.</div>
+          <div class="phrases"><span class="phr">divide tasks into smaller chunks</span><span class="phr">realistic deadlines</span><span class="phr">make life feel manageable</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="Someone you encouraged to do something 你鼓励过做某事的人">
+      <div class="card-head">
+        <h3 class="topic">Someone you encouraged to do something<small>你鼓励过做某事的人</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>who the person was</li><li>what you encouraged them to do</li><li>how they reacted</li><li>why you encouraged them</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">I once encouraged my younger brother to join a local running event with me. At first he was completely against the idea because he thought it would be exhausting and pointless. I kept encouraging him because I wanted him to become more active and believe he could do something difficult. In the end, he agreed, and the experience turned out to be much more positive than he expected.</div>
+          <div class="phrases"><span class="phr">be against the idea</span><span class="phr">keep encouraging someone</span><span class="phr">turn out better than expected</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="A factory or production-related place 与工厂/生产有关的话题">
+      <div class="card-head">
+        <h3 class="topic">A factory or production-related place<small>与工厂/生产有关的话题</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what it produces</li><li>how modern factories work</li><li>machines vs people</li><li>your opinion</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">If I had to describe a production-related place, I’d talk about a modern factory rather than a traditional workshop. What interests me is the way technology makes large-scale production faster and more consistent. At the same time, I don’t think human workers become unimportant, because judgment, creativity, and quality control are still essential in many areas.</div>
+          <div class="phrases"><span class="phr">large-scale production</span><span class="phr">speed and consistency</span><span class="phr">human judgment still matters</span></div>
+        </div>
+      </details>
+      </article><article class="card searchable" data-part="part2" data-topic="An animal-related experience 与动物有关的经历/话题">
+      <div class="card-head">
+        <h3 class="topic">An animal-related experience<small>与动物有关的经历/话题</small></h3>
+        <div class="label-row"><span class="chip p2">Part 2</span></div>
+      </div>
+      <div class="q">Cue card</div>
+      <ul class="cue"><li>what the experience was</li><li>where it happened</li><li>what you learned</li><li>how you felt</li></ul>
+      <details open>
+        <summary>展开参考答案</summary>
+        <div class="answer-wrap">
+          <div class="a" style="margin-top:8px">One animal-related experience I remember clearly was visiting a wildlife park as a child. Seeing animals in real life felt very different from seeing them in books or on screens. The visit made me realize that animals are not just entertaining but also vulnerable, and that people have a responsibility to protect their habitats.</div>
+          <div class="phrases"><span class="phr">very different from screens</span><span class="phr">feel a sense of wonder</span><span class="phr">protect their habitats</span></div>
+        </div>
+      </details>
+      </article>
+  </section>
+
+  <section id="part3Sec" class="section">
+    <div class="section-head"><h2>Part 3 讨论与拓展</h2><div class="counter" id="count3"></div></div>
+    <article class="card searchable" data-part="part3" data-topic="Science 科学">
+      <div class="card-head">
+        <h3 class="topic">Science<small>科学</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">What is the influence of science on human life?</div><div class="a">Science has transformed daily life by making ordinary activities safer, faster, and more efficient. From medicine to transport to communication, scientific progress has extended life expectancy and expanded what people can do in a normal day.</div></div><div class="item"><div class="q">How can ordinary people contribute to scientific research?</div><div class="a">Ordinary people can contribute through public awareness, citizen science projects, and financial support. Even simple actions like sharing accurate information or participating in data-collection projects can be meaningful.</div></div><div class="item"><div class="q">Why is international cooperation in science important?</div><div class="a">Because major problems such as pandemics and climate change do not stop at national borders. Cooperation allows countries to share data, resources, and expertise, which usually speeds up progress and improves outcomes.</div></div>
+      <div class="frame">万能结构：观点 → 例子 → broader impact</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Plans 计划">
+      <div class="card-head">
+        <h3 class="topic">Plans<small>计划</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">Is making plans important?</div><div class="a">Yes, because plans give people direction and reduce uncertainty. A clear plan helps people allocate their time and energy more effectively instead of reacting to everything at the last minute.</div></div><div class="item"><div class="q">What kinds of activities need careful planning?</div><div class="a">Activities involving money, travel, deadlines, or coordination with other people usually need careful planning. The more moving parts there are, the more important planning becomes.</div></div><div class="item"><div class="q">Can over-planning be a problem?</div><div class="a">Yes, sometimes. If people plan every detail too rigidly, they may struggle to adapt when reality changes. So planning is useful, but flexibility matters just as much.</div></div>
+      <div class="frame">万能结构：clear stance → why → balance</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Leadership and Encouragement 领导与鼓励">
+      <div class="card-head">
+        <h3 class="topic">Leadership and Encouragement<small>领导与鼓励</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">How can leaders encourage employees?</div><div class="a">Good leaders encourage employees by recognizing effort, giving useful feedback, and creating an atmosphere where people feel trusted. Motivation grows when workers feel that their work is noticed and meaningful.</div></div><div class="item"><div class="q">Why do some people need encouragement more than others?</div><div class="a">Because confidence levels vary from person to person. Some people are naturally self-driven, while others need external reassurance, especially when they are facing pressure or unfamiliar tasks.</div></div><div class="item"><div class="q">Is praise always effective?</div><div class="a">Not always. Praise works best when it is specific and sincere. If it feels exaggerated or empty, people may stop taking it seriously.</div></div>
+      <div class="frame">万能结构：method → reason → qualification</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Apology and Responsibility 道歉与责任">
+      <div class="card-head">
+        <h3 class="topic">Apology and Responsibility<small>道歉与责任</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">Why do some people dislike apologizing?</div><div class="a">Some people associate apologizing with weakness or loss of pride. Others simply feel uncomfortable admitting fault, especially in situations where they want to protect their image.</div></div><div class="item"><div class="q">Are words more important than actions?</div><div class="a">Usually actions matter more, because they show real commitment. However, words still have value when they are honest and followed by consistent behavior.</div></div><div class="item"><div class="q">Does admitting mistakes help relationships?</div><div class="a">In many cases, yes. Taking responsibility can rebuild trust because it shows maturity, honesty, and respect for the other person’s feelings.</div></div>
+      <div class="frame">万能结构：explain motive → compare → conclude</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Children and Toys 儿童与玩具">
+      <div class="card-head">
+        <h3 class="topic">Children and Toys<small>儿童与玩具</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">Why are toys important for children?</div><div class="a">Toys support children’s development by encouraging imagination, interaction, and fine motor skills. They can also provide comfort and help children make sense of the world through play.</div></div><div class="item"><div class="q">Should children always take their favorite toy with them?</div><div class="a">Not necessarily. A favorite toy can provide emotional security, but if a child becomes too dependent on it, that might limit independence and adaptation.</div></div><div class="item"><div class="q">What kinds of toys are most beneficial?</div><div class="a">Toys that encourage creativity, movement, or social interaction are often the most beneficial. Open-ended toys are especially valuable because children can use them in many different ways.</div></div>
+      <div class="frame">万能结构：benefit → risk → balanced answer</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Factories and Production 工厂与生产">
+      <div class="card-head">
+        <h3 class="topic">Factories and Production<small>工厂与生产</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">What kinds of goods are produced in modern factories?</div><div class="a">Modern factories produce a huge range of items, including electronics, vehicles, food products, clothes, and medicine. The key feature is large-scale, standardized production.</div></div><div class="item"><div class="q">Are machines better than handmade production?</div><div class="a">Machines are better for efficiency and consistency, especially in mass production. Handmade work, however, still has value in areas where craftsmanship, uniqueness, or artistic meaning matters.</div></div><div class="item"><div class="q">Will factories become more automated in the future?</div><div class="a">Yes, most likely. Automation can improve speed and accuracy, but I don’t think humans will disappear completely because oversight, creativity, and problem-solving are still essential.</div></div>
+      <div class="frame">万能结构：main trend → contrast → future view</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Architecture and Cities 建筑与城市">
+      <div class="card-head">
+        <h3 class="topic">Architecture and Cities<small>建筑与城市</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">Why do people visit famous buildings?</div><div class="a">People visit famous buildings because they are interested in history, design, and cultural meaning. A well-known building often represents more than itself; it can symbolize a city or a period of time.</div></div><div class="item"><div class="q">Should cities protect old buildings?</div><div class="a">Yes, because old buildings preserve local identity and cultural memory. Of course, not every building can be saved, but important landmarks should be protected whenever possible.</div></div><div class="item"><div class="q">Do modern buildings and old buildings give different feelings?</div><div class="a">Definitely. Modern buildings often feel efficient and dynamic, while old buildings tend to feel more distinctive and emotionally meaningful. Each type has its own appeal.</div></div>
+      <div class="frame">万能结构：reason → value → comparison</div>
+      </article><article class="card searchable" data-part="part3" data-topic="Animals and Tourism 动物与旅游">
+      <div class="card-head">
+        <h3 class="topic">Animals and Tourism<small>动物与旅游</small></h3>
+        <div class="label-row"><span class="chip p3">Part 3</span></div>
+      </div>
+      <div class="item"><div class="q">How can children learn about animals?</div><div class="a">Children can learn through books, documentaries, school activities, and visits to zoos or wildlife parks. Direct observation often makes knowledge more vivid and memorable.</div></div><div class="item"><div class="q">Does tourism have a positive or negative effect on animals?</div><div class="a">It can have both. Tourism may raise awareness and provide funding for protection, but poorly managed tourism can also damage habitats and stress animals.</div></div><div class="item"><div class="q">Why should people protect animals?</div><div class="a">Because animals are part of the natural balance of the planet, and many species are vulnerable to human activity. Protecting them is both an ecological and an ethical responsibility.</div></div>
+      <div class="frame">万能结构：both sides → condition → conclusion</div>
+      </article>
+  </section>
+
+  <section id="bankSec" class="section">
+    <div class="section-head"><h2>表达库</h2><div class="counter">适合背诵前快速浏览</div></div>
+    <div class="grid2">
+      <div class="card bank"><h3>Part 1 开头</h3><ul><li>To be honest, ...</li><li>If I had to choose, I&#x27;d say ...</li><li>What stands out to me most is ...</li><li>Generally speaking, ...</li></ul></div><div class="card bank"><h3>Part 2 叙述</h3><ul><li>What immediately comes to mind is ...</li><li>I first came across it when ...</li><li>What impressed me most was ...</li><li>Looking back, I realize that ...</li></ul></div><div class="card bank"><h3>Part 3 论证</h3><ul><li>I’d say the main reason is that ...</li><li>From a broader perspective, ...</li><li>That depends to some extent.</li><li>A balanced view would be that ...</li></ul></div><div class="card bank"><h3>高频搭配</h3><ul><li>a sense of comfort</li><li>step out of my comfort zone</li><li>practical and manageable</li><li>emotionally meaningful</li><li>large-scale production</li><li>protect natural habitats</li><li>give people direction</li><li>feel more connected</li></ul></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const sections = document.querySelectorAll('.section');
+tabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    sections.forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.target).classList.add('active');
+  });
+});
+
+const cards = [...document.querySelectorAll('.searchable')];
+const search = document.getElementById('search');
+const topicFilter = document.getElementById('topicFilter');
+const partFilter = document.getElementById('partFilter');
+
+const topics = [...new Set(cards.map(c => c.dataset.topic.trim()))].sort((a,b)=>a.localeCompare(b));
+topics.forEach(t => {
+  const op = document.createElement('option');
+  op.value = t; op.textContent = t;
+  topicFilter.appendChild(op);
+});
+
+function applyFilters() {
+  const q = search.value.trim().toLowerCase();
+  const topic = topicFilter.value;
+  const part = partFilter.value;
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const okQ = !q || text.includes(q);
+    const okT = !topic || card.dataset.topic === topic;
+    const okP = !part || card.dataset.part === part;
+    card.style.display = (okQ && okT && okP) ? '' : 'none';
+  });
+  document.getElementById('count1').textContent = `${[...document.querySelectorAll('#part1Sec .searchable')].filter(x => x.style.display !== 'none').length} 个主题`;
+  document.getElementById('count2').textContent = `${[...document.querySelectorAll('#part2Sec .searchable')].filter(x => x.style.display !== 'none').length} 张话题卡`;
+  document.getElementById('count3').textContent = `${[...document.querySelectorAll('#part3Sec .searchable')].filter(x => x.style.display !== 'none').length} 组讨论主题`;
+}
+search.addEventListener('input', applyFilters);
+topicFilter.addEventListener('change', applyFilters);
+partFilter.addEventListener('change', applyFilters);
+applyFilters();
+
+const toggleBtn = document.getElementById('toggleAnswers');
+let hiddenMode = false;
+toggleBtn.addEventListener('click', () => {
+  hiddenMode = !hiddenMode;
+  document.body.classList.toggle('hide-answers', hiddenMode);
+  toggleBtn.textContent = hiddenMode ? '显示答案模式' : '隐藏答案模式';
+});
+</script>
+</body>
+</html>
